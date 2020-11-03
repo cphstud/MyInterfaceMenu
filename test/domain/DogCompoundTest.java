@@ -15,7 +15,7 @@ public class DogCompoundTest {
         dog1 = new Dog(26901,"Blenheim","Spaniel","CORKY","Female","HILLIER");
         dog2 = new Dog(60736,"Fawn","Greyhound","LADY","Desexed Female","ELIZABETH NORTH");
         dog3 = new Dog(101440,"Gold","Golden Retriever","GRACE","Female","CRAIGMORE");
-        compound = new DogCompound(2,"CRAIGMORE");
+        compound = new DogCompound(1,2,"CRAIGMORE");
     }
 
     @Test

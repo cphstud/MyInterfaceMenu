@@ -16,7 +16,10 @@ public class OrderUIImpl implements OrderUI{
 
     @Override
     public int addCustomer() {
-        return 0;
+        int retVal = 0;
+        System.out.println("Enter Phone: ");
+        retVal = sc.nextInt();
+        return retVal;
     }
 
     @Override

@@ -1,13 +1,17 @@
 package entry;
 
+import Service.BestillingsService;
+import Service.BestillingsServiceFileImpl;
 import Service.DogCompoundService;
 import Service.DogCompoundServiceImpl;
+import domain.Dog;
 import domain.Order;
 import domain.OrderComponent;
 import presentation.*;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainController {
@@ -16,6 +20,7 @@ public class MainController {
     ShowMenu showMenu = new ShowMenuDK();
     ShowDogs showDogs = new ShowDogsImpl();
     DogCompoundService ds = new DogCompoundServiceImpl();
+    BestillingsService bs = new BestillingsServiceFileImpl();
     ArrayList<Order> bestillinger = new ArrayList<>();
 
     public void runProgram() {
@@ -27,10 +32,14 @@ public class MainController {
                 case 2: createOrder();break;
                 case 3: editOrder();break;
                 case 4: confirmOrder();break;
+                case 5: writeBestillingerToStorage();break;
                 case 8: changeLanguage();break;
                 default:choice=9;break;
             }
         }
+    }
+    private void writeBestillingerToStorage() {
+        bs.writeToStorage(bestillinger);
     }
 
     private void changeLanguage() {
@@ -50,7 +59,8 @@ public class MainController {
     private void createOrder() {
         OrderUI orderUI = new OrderUIImpl();
         try {
-            showDogs.showDogs(ds.getAllDogs());
+            List<Dog> allDogs = ds.getAllDogs();
+            showDogs.showDogs(allDogs);
             int dogId = orderUI.addDog();
             int phone = orderUI.addCustomer();
             OrderComponent orderComponent = new OrderComponent(dogId, phone);

@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface DogCompoundService {
     List<Dog> getAllDogs() throws FileNotFoundException;
-    public void addDogToCompound(DogCompound dogCompound, Dog dog);
-    public Dog getDogFromCompoundByID(DogCompound dogCompound, int id);
-    public Dog getDogFromID(int id);
-    public DogCompound getDogCompoundByID(int id);
+    void addDogToCompound(DogCompound dogCompound, Dog dog);
+    Dog getDogFromCompoundByID(DogCompound dogCompound, int id);
+    Dog getDogFromID(int id);
+    DogCompound getDogCompoundByID(int id);
     List<DogCompound> getAllCompounds();
     double getDogCarePrice(DogCompound dogCompound);
 }

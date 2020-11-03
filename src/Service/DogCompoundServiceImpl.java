@@ -8,7 +8,11 @@ import java.util.List;
 
 public class DogCompoundServiceImpl implements DogCompoundService{
     // TODO: make this singleton
-    private List<Dog> dogs = new ArrayList<>();
+    private final List<Dog> dogs = new ArrayList<>();
+
+    public DogCompoundServiceImpl() {
+        initDogs();
+    }
 
     public void initDogs() {
         Dog dog1 = new Dog(26901,"Blenheim","Spaniel","CORKY","Female","HILLIER");

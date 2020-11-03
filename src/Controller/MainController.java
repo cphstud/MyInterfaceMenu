@@ -7,6 +7,8 @@ import UI.Menu;
 import UI.MenuImpDK;
 import UI.MenuImpUK;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainController {
@@ -14,8 +16,10 @@ public class MainController {
     Menu menu = new MenuImpDK();
     Scanner sc = new Scanner(System.in);
     DogService ds = new DogServiceImp();
+    List<Dog> dogs = new ArrayList<>();
 
     public void runProgram() {
+        dogs = ds.getAllDogs();
         int choice = 0;
         int exitValue = 9;
         

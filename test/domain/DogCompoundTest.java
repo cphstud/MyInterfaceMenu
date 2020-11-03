@@ -11,6 +11,11 @@ public class DogCompoundTest {
 
     @Before
     public void setup() {
+        //26901,Blenheim,Spaniel,CORKY,Female,HILLIER
+        dog1 = new Dog(26901,"Blenheim","Spaniel","CORKY","Female","HILLIER");
+        dog2 = new Dog(60736,"Fawn","Greyhound","LADY","Desexed Female","ELIZABETH NORTH");
+        dog3 = new Dog(101440,"Gold","Golden Retriever","GRACE","Female","CRAIGMORE");
+        compound = new Compound(2,"CRAIGMORE");
 
     }
 

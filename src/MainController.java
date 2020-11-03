@@ -21,13 +21,10 @@ public class MainController {
     }
 
     private void changeLanguage() {
-        int lchoice = 0;
-            System.out.println("1) skift til engesk");
-            System.out.println("2) change to danish");
-            lchoice = sc.nextInt();
-            switch (lchoice) {
-                case 1: showMenu = new ShowMenuUK();break;
-                case 2: showMenu = new ShowMenuDK();break;
+        String lg = showMenu.getLanguage();
+            switch (lg) {
+                case "danish": showMenu = new ShowMenuUK();break;
+                case "english": showMenu = new ShowMenuDK();break;
             }
     }
 

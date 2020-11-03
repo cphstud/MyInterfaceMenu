@@ -9,4 +9,9 @@ public class ShowMenuUK implements ShowMenu{
         System.out.println("9) exit ");
 
     }
+
+    @Override
+    public String getLanguage() {
+        return "english";
+    }
 }

@@ -8,4 +8,9 @@ public class ShowMenuDK implements ShowMenu{
         System.out.println("8) skift til engelsk");
         System.out.println("9) exit ");
     }
+
+    @Override
+    public String getLanguage() {
+        return "danish";
+    }
 }

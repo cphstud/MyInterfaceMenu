@@ -13,14 +13,21 @@ public class DogCompoundServiceFileDB implements DogCompoundService{
     public List<Dog> getAllDogs() throws FileNotFoundException {
         List<Dog> dogs = new ArrayList<>();
         // TODO: get dogs from file
+        //1,20990,Red,Dobermann,AMY,Desexed Female,WATERLOO CORNER
+        /// dog1 = new Dog(26901,"Blenheim","Spaniel","CORKY","Female","HILLIER");
+        //
         File file = new File("resource/dogstest.csv");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line = "";
+        Dog dog = null;
         try {
+            br.readLine();
             while((line = br.readLine()) != null) {
                 String[] lineArr = line.split(",");
                 System.out.println(line);
+                dog = new Dog(Integer.valueOf(lineArr[1]),lineArr[2],lineArr[3],lineArr[4],lineArr[5], lineArr[6]);
+                dogs.add(dog);
             }
         } catch (IOException e) {
             e.printStackTrace();

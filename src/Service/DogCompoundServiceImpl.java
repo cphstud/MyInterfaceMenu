@@ -7,12 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DogCompoundServiceImpl implements DogCompoundService{
-    @Override
-    public List<Dog> getAllDogs() {
-        List<Dog> dogs = new ArrayList<>();
+    // TODO: make this singleton
+    private List<Dog> dogs = new ArrayList<>();
+
+    public void initDogs() {
         Dog dog1 = new Dog(26901,"Blenheim","Spaniel","CORKY","Female","HILLIER");
         Dog dog2 = new Dog(60736,"Fawn","Greyhound","LADY","Desexed Female","ELIZABETH NORTH");
         Dog dog3 = new Dog(101440,"Gold","Golden Retriever","GRACE","Female","CRAIGMORE");
+        dogs.add(dog1);
+        dogs.add(dog2);
+        dogs.add(dog3);
+    }
+
+    @Override
+    public List<Dog> getAllDogs() {
         return dogs;
     }
 
@@ -25,6 +33,11 @@ public class DogCompoundServiceImpl implements DogCompoundService{
     @Override
     public Dog getDogFromCompoundByID(DogCompound dogCompound, int id) {
         return null;
+    }
+
+    @Override
+    public Dog getDogFromID(int id) {
+        return  dogs.get(id);
     }
 
     @Override

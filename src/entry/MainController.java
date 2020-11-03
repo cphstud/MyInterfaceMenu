@@ -1,15 +1,22 @@
 package entry;
 
-import presentation.ShowMenu;
-import presentation.ShowMenuDK;
-import presentation.ShowMenuUK;
+import Service.DogCompoundService;
+import Service.DogCompoundServiceImpl;
+import domain.Order;
+import domain.OrderComponent;
+import presentation.*;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainController {
     int choice = 0;
     Scanner sc = new Scanner(System.in);
     ShowMenu showMenu = new ShowMenuDK();
+    ShowDogs showDogs = new ShowDogsImpl();
+    DogCompoundService ds = new DogCompoundServiceImpl();
+    ArrayList<Order> bestillinger = new ArrayList<>();
 
     public void runProgram() {
         while (choice!=9) {
@@ -41,5 +48,19 @@ public class MainController {
     }
 
     private void createOrder() {
+        OrderUI orderUI = new OrderUIImpl();
+        try {
+            showDogs.showDogs(ds.getAllDogs());
+            int dogId = orderUI.addDog();
+            int phone = orderUI.addCustomer();
+            OrderComponent orderComponent = new OrderComponent(dogId, phone);
+            boolean ok = orderUI.showOrder(orderComponent);
+            if (ok) {
+                Order order = new Order(ds.getDogFromID(dogId),phone);
+                bestillinger.add(order);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

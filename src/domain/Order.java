@@ -1,13 +1,23 @@
 package domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Order {
     private static int counter = 0;
     private int id;
     private int customerPhone;
     private Dog dog;
+    private List<Dog> dogs;
     private LocalDateTime orderTime;
+
+    public Order(List<Dog> dogs, int customerPhone ) {
+        this.dogs = dogs;
+        this.orderTime = LocalDateTime.now();
+        this.customerPhone = customerPhone;
+        this.id = counter;
+        counter++;
+    }
 
     public Order(Dog dog, int customerPhone ) {
         this.dog = dog;
@@ -15,6 +25,10 @@ public class Order {
         this.customerPhone = customerPhone;
         this.id = counter;
         counter++;
+    }
+
+    public List<Dog> getDogs() {
+        return dogs;
     }
 
     public int getId() {

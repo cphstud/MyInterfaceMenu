@@ -51,6 +51,11 @@ public class DogCompoundServiceFileDB implements DogCompoundService{
     }
 
     @Override
+    public List<Dog> getDogsFromID(List<Integer> ids) {
+        return null;
+    }
+
+    @Override
     public DogCompound getDogCompoundByID(int id) {
         return null;
     }

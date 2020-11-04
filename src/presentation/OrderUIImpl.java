@@ -2,6 +2,8 @@ package presentation;
 
 import domain.OrderComponent;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class OrderUIImpl implements OrderUI{
@@ -12,6 +14,19 @@ public class OrderUIImpl implements OrderUI{
         System.out.println("Enter dogID: ");
         retVal = sc.nextInt();
         return retVal;
+    }
+
+    @Override
+    public List<Integer> addMoreDogs() {
+        List<Integer> retVal = new ArrayList<>();
+        int choice = 0;
+        int dogId = 0;
+        while(choice!=9) {
+            System.out.println("Enter dogID: ");
+            dogId = sc.nextInt();
+            retVal.add(dogId);
+        }
+        return null;
     }
 
     @Override

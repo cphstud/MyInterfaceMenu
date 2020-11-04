@@ -1,5 +1,6 @@
 package Service;
 
+import domain.Dog;
 import domain.Order;
 
 import java.io.BufferedWriter;
@@ -17,6 +18,27 @@ public class BestillingsServiceFileImpl implements BestillingsService{
             BufferedWriter bw = new BufferedWriter(fw);
             for (Order order : orders) {
                 String msg = String.format("DOGID: %d, CustPhone: %d, Date: %s", order.getDog().getId(), order.getCustomerPhone(), order.getOrderTime().toString());
+                bw.write(msg);
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void writeImprovedToStorage(ArrayList<Order> orders) {
+        File file = new File("resource/bestillinger.csv");
+        String dogs = "";
+        try {
+            FileWriter fw = new FileWriter(file, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (Order order : orders) {
+                for (Dog dog : order.getDogs()) {
+                    dogs += dog.getId() + "@";
+                }
+                String msg = String.format("CustPhone: %d, Date: %s, Dogs: %s", order.getCustomerPhone(), order.getOrderTime().toString(), dogs);
                 bw.write(msg);
                 bw.newLine();
             }

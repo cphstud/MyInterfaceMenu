@@ -2,6 +2,7 @@ package Service;
 
 import domain.Dog;
 import domain.Order;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -11,6 +12,10 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class BestillingsServiceFileImplTest {
+    @Before
+    public void setup() {
+
+    }
 
 
     @Test
@@ -18,7 +23,6 @@ public class BestillingsServiceFileImplTest {
         BestillingsService bs = new BestillingsServiceFileImpl();
         DogCompoundService ds = new DogCompoundServiceImpl();
         try {
-
             List<Dog> dogs = ds.getAllDogs();
             ArrayList<Order> orders = new ArrayList<>();
             int phone = 123123;
@@ -33,5 +37,9 @@ public class BestillingsServiceFileImplTest {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void writeImprovedToStorage() {
     }
 }

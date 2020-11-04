@@ -61,12 +61,14 @@ public class MainController {
         try {
             List<Dog> allDogs = ds.getAllDogs();
             showDogs.showDogs(allDogs);
-            int dogId = orderUI.addDog();
+            //int dogId = orderUI.addDog();
+            List<Integer> dogIds = orderUI.addMoreDogs();
             int phone = orderUI.addCustomer();
-            OrderComponent orderComponent = new OrderComponent(dogId, phone);
+            //OrderComponent orderComponent = new OrderComponent(dogId, phone);
+            OrderComponent orderComponent = new OrderComponent(dogIds, phone);
             boolean ok = orderUI.showOrder(orderComponent);
             if (ok) {
-                Order order = new Order(ds.getDogFromID(dogId),phone);
+                Order order = new Order(ds.getDogsFromID(dogIds),phone);
                 bestillinger.add(order);
             }
         } catch (FileNotFoundException e) {

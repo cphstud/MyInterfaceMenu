@@ -2,6 +2,7 @@ package Service;
 
 import domain.Dog;
 import domain.DogCompound;
+import domain.DogNotFoundExeption;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,19 @@ public class DogCompoundServiceImpl implements DogCompoundService{
     }
 
     @Override
-    public Dog getDogFromID(int id) {
-        return  dogs.get(id);
+    public Dog getDogFromID(int id) throws DogNotFoundExeption {
+        Dog tmpDog = null;
+        try {
+            tmpDog = getDogFromID(id);
+        } catch (DogNotFoundExeption e) {
+            throw new DogNotFoundExeption("Dog not found");
+        }
+        return tmpDog;
+    }
+
+    @Override
+    public List<Dog> getDogsFromID(List<Integer> ids) {
+        return null;
     }
 
     @Override

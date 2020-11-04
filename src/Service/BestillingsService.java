@@ -7,4 +7,5 @@ import java.util.ArrayList;
 
 public interface BestillingsService {
     void writeToStorage(ArrayList<Order> orders);
+    void writeImprovedToStorage(ArrayList<Order> orders);
 }
